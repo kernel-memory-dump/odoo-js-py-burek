@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="burek_action" model="ir.actions.act_window">
+        <field name="name">bureks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">demo.burek</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record model="ir.ui.view" id="burek_tree_view">
+        <field name="name">demo.burek.tree</field>
+        <field name="model">demo.burek</field>
+        <field name="arch" type="xml">
+            <tree string="bureks" editable="top">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="bureks" id="burek_base_menu" web_icon="burek_viewer,static/description/icon.png"/>
+    <menuitem id="burek_menu" action="burek_action" name="bureks" parent="burek_base_menu" sequence="10"/>
+</odoo>

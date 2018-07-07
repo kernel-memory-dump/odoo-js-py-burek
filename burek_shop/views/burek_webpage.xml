@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="burek_landing_page" name="Burek page" page="True">
+        <t t-call="web.layout">
+            <!-- JS, CSS< sva statika, eventualno SESSION info -->
+            <!-- event bus se init u App Root usually -->
+            <t t-set="head">
+                <t t-call-assets="web.assets_common" t-js="false"/>
+                <t t-call-assets="burek.burek_assets" t-js="false"/>
+                <t t-call-assets="web.assets_common" t-css="false"/>
+                <t t-call-assets="burek_viewer.burek_assets" t-css="false"/>
+                <script type="text/javascript">                    odoo.session_info = {                        user_id: 
+                    <t t-esc="json.dumps(request.env.user.id)"/>                    };                
+                </script>
+            </t>
+            <div class="container-fluid">
+                <!-- ROOT app via jquery
+                 nadje ovaj elem i
+                  smesti se unutra -->
+                <div class="row ovde_ce_se_smestiti_root_app"/></div>
+        </t>
+    </template>
+    <template id="burek_assets" name="burek Viewer Application Assets" inherit_id="web.assets_frontend" primary="True">
+        <xpath expr="." position="inside">
+            <link rel='stylesheet' type="text/less" href='/burek_viewer/static/src/less/burek_viewer.less'/>
+            <script type="text/javascript" src="/burek_viewer/static/lib/js/router.js"/>
+            <script type="text/javascript" src="/bus/static/src/js/bus.js"/>
+            <script type="text/javascript" src="/web/static/src/js/widgets/notification.js"/>
+            <script type="text/javascript" src="/burek_viewer/static/src/js/models.js"/>
+            <script type="text/javascript" src="/burek_viewer/static/src/js/controllers.js"/>
+        </xpath>
+    </template>
+    <template id="burek_list">
+        <t t-call="web.layout">
+            <t t-set="head">
+                <t t-call-assets="web.assets_common" t-js="false"/>
+                <t t-call-assets="burek_viewer.burek_assets" t-js="false"/>
+                <t t-call-assets="web.assets_common" t-css="false"/>
+                <t t-call-assets="burek_viewer.burek_assets" t-css="false"/>
+                <script type="text/javascript">                    odoo.session_info = {                        user_id: 
+                    <t t-esc="json.dumps(request.env.user.id)"/>                    };                
+                </script>
+            </t>
+            <div class="container-fluid">
+                <div class="row o_burek_app"/></div>
+        </t>
+    </template>
+</odoo>
